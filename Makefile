@@ -57,6 +57,12 @@ else
   ifneq ($(PLATFORM),sdl)
     $(error Unsupported CPU arch for platform '$(CPU_ARCH)', '$(PLATFORM)')
   endif
+else
+# Dreamcast
+  ifeq ($(PLATFORM),sdl_dreamcast)
+    TOOLCHAIN := /usr/x86_64-w64-mingw32/
+    PREFIX := x86_64-w64-mingw32-
+  endif
 endif # (PLATFORM == gba)
 
 
@@ -156,6 +162,8 @@ TILESETS_SUBDIR = graphics/tilesets/
 ifeq ($(PLATFORM),gba)
 C_SRCS := $(shell find $(C_SUBDIR) -name "*.c" -not -path "*/platform/*")
 else ifeq ($(PLATFORM),sdl)
+C_SRCS := $(shell find $(C_SUBDIR) -name "*.c" -not -path "*/platform/win32/*")
+else ifeq ($(PLATFORM),sdl_dreamcast)
 C_SRCS := $(shell find $(C_SUBDIR) -name "*.c" -not -path "*/platform/win32/*")
 else ifeq ($(PLATFORM),sdl_win32)
 C_SRCS := $(shell find $(C_SUBDIR) -name "*.c" -not -path "*/platform/win32/*")
@@ -298,6 +306,9 @@ else ifeq ($(PLATFORM),sdl)
         MAP_FLAG := -Xlinker -Map=
     endif
 # Win32
+else
+    MAP_FLAG := -Xlinker -Map=
+# Dreamcast
 else
     MAP_FLAG := -Xlinker -Map=
 endif
