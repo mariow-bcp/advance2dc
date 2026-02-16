@@ -22,6 +22,7 @@ It builds the following ROMs:
 * [**sa2_beta.gba**](https://datomatic.no-intro.org/index.php?page=show_record&s=23&n=x149) `sha1: 3368642fc4157824af63367e2a685b7d6ee9b09d` (USA) (Beta) (2002-10-25)
 
 It can also build:
+* **sa2.sdl_dreamcast.cdi** `make sdl_dreamcast` (Dreamcast port, exclusive to this fork, not tried yet)
 * **sa2.sdl** `make sdl` (Linux/MacOS SDL 64bit port)
 * **sa2.sdl_win32.exe** `make sdl_win32` (Windows SDL 64bit port)
 * :construction: **sa2.win32.exe** `make win32` (Win32 native port, not functional)
